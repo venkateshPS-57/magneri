@@ -1,0 +1,14 @@
+{
+  "baseUrl": {
+    "StagingUrl": "",
+    "ProductionUrl": "https://app.magneri.com/"
+  },
+  "user1": {
+    "mail": "pheonixsolutionshelpdesk@gmail.com",
+    "password": "478453GmYKbyTAn"
+  },
+  "user2": {
+    "mail": "zuv14863@nezid.com",
+    "password": "Gcnn5dxepaq8R1Qnip5f"
+  }
+}
