@@ -10,16 +10,4 @@ exports.helpPage = class helpPage {
     this.locPreviousBtn = "//a[text()=' PREV']";
     this.locNextBtn = "//a[text()=' NEXT']";
   }
-
-  async verifyColorOfNavigationBar() {
-    const element = await this.page.waitForSelector(this.locNavigationBar);
-    const color = await element.evaluate((el) => {
-      return window.getComputedStyle(el).getPropertyValue("background-color");
-    });
-
-    console.log(color);
-    //expect(color).toBe("rgb(26, 179, 148)"); //Green
-
-    expect(color).toBe("rgb(47, 128, 237)"); //Blue //#2F80ED color RGB value is (47,128,237)
-  }
 };

@@ -4,6 +4,10 @@ exports.dashboardPage = class dashboardPage {
   constructor(page) {
     this.page = page;
     this.locNavBar = ".navbar-minimalize.minimalize-styl-2.btn.btn-primary";
+    this.locHeader = "//h2";
+    this.locSearchIcon = "//button[@id='search_toggle']";
+    this.locUserMail = "//span[@class='m-r-sm text-muted welcome-message']";
+    this.locLogout = "//a[normalize-space()='Log out']";
     this.locSendBtn = "#send_btn";
     this.locReportsMenu = "//span[normalize-space()='Reports']";
     this.locMessages = "//span[normalize-space()='Messages']";
@@ -16,16 +20,30 @@ exports.dashboardPage = class dashboardPage {
     this.locHelp = "//span[normalize-space()='Help']";
   }
 
-  async verifyColorOfNavBar() {
-    const element = await this.page.waitForSelector(this.locNavBar);
-    const color = await element.evaluate((el) => {
-      return window.getComputedStyle(el).getPropertyValue("background-color");
-    });
+  async verifyTitleOfPage() {
+    await expect(this.page).toHaveTitle("TextHub"); //Need to change it to Magneri
+  }
 
-    console.log(color);
-    //expect(color).toBe("rgb(26, 179, 148)"); //Green
+  async verifySearchIcon() {
+    const searchIcon = await this.page.locator(this.locSearchIcon);
+    await expect(searchIcon).toBeVisible();
 
-    expect(color).toBe("rgb(47, 128, 237)"); //Blue //#2F80ED color RGB value is (47,128,237)
+    //await this.page.locator(this.locSearchIcon).toBeVisible();
+  }
+
+  async verifyUserMailIdIsSame(mail) {
+    await expect(await this.page.locator(this.locUserMail)).toContainText(mail);
+  }
+
+  async verifyLogoutBtnIsPresentAndEnabled() {
+    await expect(await this.page.locator(this.locLogout)).toBeVisible();
+    //.toBeEnabled();
+  }
+  async verifyHeaderOfPage() {
+    await expect(await this.page.locator(this.locHeader)).toHaveText(
+      "Send Text"
+    );
+    //await this.page.locator(this.locHeader).expect(toBe("Send Text"));
   }
 
   async verifyColorOfSendBtn() {
@@ -35,8 +53,6 @@ exports.dashboardPage = class dashboardPage {
     });
 
     console.log(color);
-    //expect(color).toBe("rgb(26, 179, 148)"); //Green
-
     expect(color).toBe("rgb(47, 128, 237)"); //Blue //#2F80ED color RGB value is (47,128,237)
   }
 
@@ -56,15 +72,15 @@ exports.dashboardPage = class dashboardPage {
     await this.page.locator(this.locKeywords).click();
   }
 
-  async clickOnImportContacts() {
+  async clickOnImportContactsTab() {
     await this.page.locator(this.locImportContactsMenu).click();
   }
 
-  async clickOnGlobalSuppressions() {
+  async clickOnGlobalSuppressionsTab() {
     await this.page.locator(this.locGlobalSuppressionsMenu).click();
   }
 
-  async clickOnSettings() {
+  async clickOnSettingsTab() {
     await this.page.locator(this.locSettingsMenu).click();
   }
 

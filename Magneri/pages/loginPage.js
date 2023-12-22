@@ -21,7 +21,6 @@ exports.loginPage = class loginPage {
     await this.page.locator(this.locMailField).fill(email);
     await this.page.locator(this.locPassField).fill(password);
     await this.page.locator(this.locLoginBtn).click();
-    //await this.page.locator(this.locLogo);
   }
 
   async verifyColorOfLoginBtn() {
