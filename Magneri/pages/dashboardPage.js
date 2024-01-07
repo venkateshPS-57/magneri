@@ -21,7 +21,7 @@ exports.dashboardPage = class dashboardPage {
   }
 
   async verifyTitleOfPage() {
-    await expect(this.page).toHaveTitle("TextHub"); //Need to change it to Magneri
+    await expect(this.page).toHaveTitle("Magneri"); //Need to change it to Magneri
   }
 
   async verifySearchIcon() {
