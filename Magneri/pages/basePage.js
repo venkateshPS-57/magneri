@@ -14,6 +14,10 @@ exports.basePage = class basePage {
     await this.page.waitForLoadState("networkidle");
   }
 
+  async waitUntil5SecondsExplicitly() {
+    await this.page.waitForTimeout(5000);
+  }
+
   async waitUntil10SecondsExplicitly() {
     await this.page.waitForTimeout(10000);
   }

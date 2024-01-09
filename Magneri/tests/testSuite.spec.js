@@ -76,7 +76,7 @@ test("MessagesTab", async ({ page }) => {
 
   await login.goToLoginPage(testURL);
   await login.loginWithEmailAndPassword(testUserMail, testUserPassword);
-  await page.waitForTimeout(5000);
+  await base.waitUntil5SecondsExplicitly();
   await base.waitTillNetworkIdle();
   await dashboard.clickOnMessagesTab();
   await base.waitTillNetworkIdle();
