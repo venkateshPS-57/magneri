@@ -10,6 +10,22 @@ exports.basePage = class basePage {
     this.locNextBtn = "//a[text()=' NEXT']";
   }
 
+  async waitTillNetworkIdle() {
+    await this.page.waitForLoadState("networkidle");
+  }
+
+  async waitUntil10SecondsExplicitly() {
+    await this.page.waitForTimeout(10000);
+  }
+
+  async waitUntil20SecondsExplicitly() {
+    await this.page.waitForTimeout(20000);
+  }
+
+  async waitUntil30SecondsExplicitly() {
+    await this.page.waitForTimeout(30000);
+  }
+
   async verifyColorOfNavigationBar() {
     const element = await this.page.waitForSelector(this.locNavigationBar);
     const color = await element.evaluate((el) => {

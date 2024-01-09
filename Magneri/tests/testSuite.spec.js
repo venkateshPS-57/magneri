@@ -40,7 +40,7 @@ test("DashboardPage", async ({ page }) => {
   await login.goToLoginPage(testURL);
   await login.loginWithEmailAndPassword(testUserMail, testUserPassword);
 
-  await page.waitForLoadState("networkidle");
+  await base.waitTillNetworkIdle();
   await dashboard.verifyTitleOfPage();
   await dashboard.verifyUserMailIdIsSame(testUserMail);
   await dashboard.verifySearchIcon();
@@ -58,10 +58,10 @@ test("ReportsTab", async ({ page }) => {
 
   await login.goToLoginPage(testURL);
   await login.loginWithEmailAndPassword(testUserMail, testUserPassword);
-  await page.waitForLoadState("networkidle");
+  await base.waitTillNetworkIdle();
   await dashboard.clickOnReportsTab();
 
-  await page.waitForLoadState("networkidle");
+  await base.waitTillNetworkIdle();
   await base.verifyColorOfNavigationBar();
   await base.verifyColorOfPagePreviewBtn();
   await base.verifyColorOfPreviousBtn();
@@ -77,20 +77,20 @@ test("MessagesTab", async ({ page }) => {
   await login.goToLoginPage(testURL);
   await login.loginWithEmailAndPassword(testUserMail, testUserPassword);
   await page.waitForTimeout(5000);
-  await page.waitForLoadState("networkidle");
+  await base.waitTillNetworkIdle();
   await dashboard.clickOnMessagesTab();
-  await page.waitForLoadState("networkidle");
+  await base.waitTillNetworkIdle();
 
   //Inbox
   await messages.clickOnInbox();
-  await page.waitForLoadState("networkidle");
+  await base.waitTillNetworkIdle();
 
   await base.verifyColorOfNavigationBar();
   await base.verifyColorOfNextBtn();
   await base.verifyColorOfPreviousBtn();
 
   //Outbox
-  await page.waitForLoadState("networkidle");
+  await base.waitTillNetworkIdle();
   await messages.clickOnOutbox();
 
   await base.verifyColorOfNavigationBar();
@@ -99,7 +99,7 @@ test("MessagesTab", async ({ page }) => {
   await base.verifyColorOfPreviousBtn();
 
   //Scheduled
-  await page.waitForLoadState("networkidle");
+  await base.waitTillNetworkIdle();
   await messages.clickOnScheduled();
 
   await base.verifyColorOfNavigationBar();
@@ -121,7 +121,7 @@ test("ContactsTab", async ({ page }) => {
   //All Contacts
   await contacts.clickOnAllContactsTab();
 
-  await page.waitForLoadState("networkidle");
+  await base.waitTillNetworkIdle();
   await base.verifyColorOfNavigationBar();
   await base.verifyColorOfPagePreviewBtn(); //Available only in Outbox- for USER1
   await base.verifyColorOfNextBtn();
@@ -129,7 +129,7 @@ test("ContactsTab", async ({ page }) => {
 
   //FirstContact
   await contacts.clickOnFirstContactTab();
-  await page.waitForLoadState("networkidle");
+  await base.waitTillNetworkIdle();
 
   await base.verifyColorOfNavigationBar();
   await base.verifyColorOfNextBtn();
@@ -144,10 +144,10 @@ test("KeywordsPage", async ({ page }) => {
 
   await login.goToLoginPage(testURL);
   await login.loginWithEmailAndPassword(testUserMail, testUserPassword);
-  await page.waitForLoadState("networkidle");
+  await base.waitTillNetworkIdle();
 
   await dashboard.clickOnKeywordsTab();
-  await page.waitForLoadState("networkidle");
+  await base.waitTillNetworkIdle();
   await base.verifyColorOfNavigationBar();
   await base.verifyColorOfPreviousBtn();
   await base.verifyColorOfNextBtn();
@@ -162,7 +162,7 @@ test("ImportContactsPage", async ({ page }) => {
   await login.goToLoginPage(testURL);
   await login.loginWithEmailAndPassword(testUserMail, testUserPassword);
   await dashboard.clickOnImportContactsTab();
-  await page.waitForLoadState("networkidle");
+  await base.waitTillNetworkIdle();
   await base.verifyColorOfNavigationBar();
   await importContacts.verifyColorOfNextBtn();
 
@@ -188,7 +188,7 @@ test("GlobalSuppressionsPage", async ({ page }) => {
   await login.loginWithEmailAndPassword(testUserMail, testUserPassword);
 
   await dashboard.clickOnGlobalSuppressionsTab();
-  await page.waitForLoadState("networkidle");
+  await base.waitTillNetworkIdle();
   await base.verifyColorOfNavigationBar();
   await globalSuppressions.verifyColorOfSuppressBtn();
   await base.verifyColorOfPagePreviewBtn();
@@ -205,7 +205,7 @@ test("SettingsPage", async ({ page }) => {
   await login.goToLoginPage(testURL);
   await login.loginWithEmailAndPassword(testUserMail, testUserPassword);
   await dashboard.clickOnSettingsTab();
-  await page.waitForLoadState("networkidle");
+  await base.waitTillNetworkIdle();
   await base.verifyColorOfNavigationBar();
   await settings.verifyColorOfUpdateBtn();
 });
